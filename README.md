@@ -4,7 +4,7 @@
 **Arabic Text Classification for News Articles using AraBERT with LoRA**
 
 ## Team Members
-- شهد صالح حسين (20220237)
+- شهد صلاح حسين (20220237)
 - جهاد عبد الغني دمرداش (20230161)
 - حماس محمد محمود (20230180)
 - رحمة حسان عبد القادر (20230201)
