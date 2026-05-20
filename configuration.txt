@@ -1,0 +1,55 @@
+========================================
+PROJECT CONFIGURATION
+========================================
+
+[PROJECT]
+Title: Arabic Text Classification for News Articles using AraBERT with LoRA
+Team: LoRA Legends
+Course: Cloud Computing + NLU
+
+[DATASET]
+Name: SANAD
+Source: Kaggle
+Classes: 7 (Sports, Finance, Medical, Politics, Religion, Culture, Tech)
+Total samples: 45,500
+Train/Val/Test: 80/10/10
+
+[MODEL]
+Base: aubmindlab/bert-base-arabertv02 (AraBERT v2)
+Fine-tuning: LoRA
+Task: Sequence Classification (7 classes)
+
+[LORA CONFIG]
+r: 16
+alpha: 32
+dropout: 0.1
+target_modules: query, value
+Trainable params: 595,207 (0.44%)
+
+[TRAINING]
+Batch size: 16
+Epochs: 5 (early stopping patience=2)
+Learning rate: 2e-5
+Optimizer: AdamW
+FP16: Yes
+Platform: Kaggle (GPU T4)
+Training time: ~4 hours
+
+[RESULTS]
+Base model accuracy: 13.74%
+Base model F1: 10.43%
+Fine-tuned accuracy: 97.87%
+Fine-tuned F1: 97.87%
+Cross validation (5-fold): 97.11% ± 0.33%
+
+[DEPLOYMENT]
+Gradio UI: Running on AWS EC2 (13.49.75.27:7860)
+Event-driven pipeline: S3 → SQS → Lambda → S3 (with DLQ + CloudWatch)
+Load Balancer: Configured (future scaling)
+
+[FILES INCLUDED]
+- projectcloud-966ca1 (1).ipynb
+- configuration.txt
+- requirements.txt
+- README.md
+- key.pem
